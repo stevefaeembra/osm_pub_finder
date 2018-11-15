@@ -4,8 +4,18 @@ require_relative('../models/place')
 also_reload('../models/*')
 
 get '/find' do
+  # find places matching name pattern
   @places = Place.search(params[:pattern].downcase)
   @pattern = params[:pattern]
   @count = @places.length
   erb(:results)
+end
+
+get '/neighbours/:id' do
+  # find places within a certain distance
+  @place = Place.find(params[:id])
+  @placename = @place.name
+  @places = @place.find_nearby_places()
+  @count = @places.length
+  erb(:neighbours)
 end

@@ -1,4 +1,4 @@
-<h1>Found <%= @count %> places matching <%= @pattern %></h1>
+<h1>Found <%= @count %> places close to <%= @placename %></h1>
 <table>
   <thead>
     <th>osm_id</th>
@@ -7,7 +7,7 @@
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Map link</th>
-    <th>Near</th>
+    <th>Distance (km)</th>
   </thead>
   <tbody>
     <% if @places %>
@@ -19,7 +19,7 @@
         <td><%= place.latitude %></td>
         <td><%= place.longitude %></td>
         <td><a href="<%= place.map_url %>">Map</a></td>
-        <td><a href="/neighbours/<%= place.osm_id %>">Nearby</a></td>
+        <td><%= (place.distance/1000.0).round 2 %> km </td>
       </tr>
       <% end %>
     <% end %>
