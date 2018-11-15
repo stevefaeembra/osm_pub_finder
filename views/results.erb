@@ -1,0 +1,23 @@
+<h1>Places</h1>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Place</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Map link</th>
+  </thead>
+  <tbody>
+    <% if @places %>
+      <% @places.each do |place| %>
+      <tr>
+        <td><%= place.name %></td>
+        <td><%= place.place %></td>
+        <td><%= place.latitude %></td>
+        <td><%= place.longitude %></td>
+        <td><a href="<%= place.map_url %>">Map</a></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
