@@ -5,10 +5,15 @@
 
 html {
   font-size: 16px;
-  background-color: wheat;
+}
+
+body {
+  font-size: 1.3rem;
 }
 
 th {
+  background-color: black;
+  color: white;
   padding: 0 1rem;
   font-weight: bold;
   text-align: left;
@@ -20,4 +25,12 @@ td {
 
 label, input {
   font-size: 2rem;
+}
+
+tr:nth-of-type(2n+0) {
+  background-color: whitesmoke;
+}
+
+tr:nth-of-type(2n+1) {
+  background-color: white;
 }
