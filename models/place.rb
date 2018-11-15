@@ -43,7 +43,7 @@ class Place
       from
 	      planet_osm_point
       where
-	      place in (\'city\',\'town\',\'village\',\'hamlet\',\'suburb\',\'neighbourhood\')
+	      place in (\'city\',\'town\',\'village\',\'hamlet\',\'suburb\',\'neighbourhood\',\'island\')
 	    and
         lower("name") like $1
       order by lower("name") asc;
@@ -79,7 +79,7 @@ class Place
       where
       	p."name" is not null and
       	p.place is not null and
-      	p.place in (\'city\',\'town\',\'village\',\'hamlet\',\'neighbourhood\',\'suburb\') and
+      	p.place in (\'city\',\'town\',\'village\',\'hamlet\',\'neighbourhood\',\'suburb\',\'island\') and
       	st_dwithin(home.geom,st_transform(p.way,27700),5000)
       order by
       	distance asc;
