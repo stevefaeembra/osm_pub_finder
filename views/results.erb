@@ -1,6 +1,7 @@
 <h1>Found <%= @count %> places matching <%= @pattern %></h1>
 <table>
   <thead>
+    <th>osm_id</th>
     <th>Name</th>
     <th>Place</th>
     <th>Latitude</th>
@@ -11,6 +12,7 @@
     <% if @places %>
       <% @places.each do |place| %>
       <tr>
+        <td><%= place.unid %></td>
         <td><%= place.name %></td>
         <td><%= place.place %></td>
         <td><%= place.latitude %></td>

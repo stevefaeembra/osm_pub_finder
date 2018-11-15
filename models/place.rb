@@ -2,10 +2,11 @@ require_relative("../db/sql_runner")
 
 class Place
 
-  attr_reader :id, :name, :place, :longitude, :latitude
+  attr_reader :id, :unid, :name, :place, :longitude, :latitude
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
+    @unid = options['unid'].to_i
     @name = options['name']
     @place = options['place']
     @longitude = options['longitude'].to_f
@@ -17,6 +18,7 @@ class Place
     p pattern
     sql = '
       select
+        osm_id as unid,
 	      "name",
         place,
 	      st_x(st_transform(way,4326)) as longitude,
