@@ -5,6 +5,5 @@ also_reload('../models/*')
 
 get '/find' do
   @places = Place.search(params[:pattern])
-  p @places
   erb(:results)
 end

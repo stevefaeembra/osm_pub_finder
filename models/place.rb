@@ -13,7 +13,7 @@ class Place
   end
 
   def self.search(pattern)
-    pattern.sub! "*","%"
+    pattern.gsub! /[*]/,"%"
     p pattern
     sql = '
       select

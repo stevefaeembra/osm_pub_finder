@@ -17,3 +17,7 @@ th {
 td {
   padding: 0 1rem;
 }
+
+label, input {
+  font-size: 2rem;
+}
