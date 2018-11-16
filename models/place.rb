@@ -141,7 +141,7 @@ class Place
       "suburb" => 15,
       "neighbourhood" => 15,
       "hamlet" => 16,
-      "pub" => 17
+      "pub" => 18
     }
     return levels[@place] if levels[@place]
     return default_level
