@@ -16,12 +16,12 @@
       <tr>
         <td><%= place.osm_id %></td>
         <td><%= place.name %></td>
-        <td><%= place.place %></td>
+        <td>Pub</td>
         <td><%= place.latitude.round 4 %></td>
         <td><%= place.longitude.round 4 %></td>
         <td><a href="<%= place.map_url %>">Map</a></td>
         <td><%= (place.distance/1000.0).round 2 %> km </td>
-        <td><%= ((place.distance/1000.0)*15.0*1.4).to_i %> min </td>
+        <td><%= ((place.distance/1000.0)*12.0*1.4).to_i %> min </td>
       </tr>
       <% end %>
     <% end %>

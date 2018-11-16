@@ -11,6 +11,10 @@ body {
   font-size: 1.3rem;
 }
 
+ul {
+  list-style: circle;
+}
+
 th {
   background-color: black;
   color: white;

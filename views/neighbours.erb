@@ -8,6 +8,7 @@
     <th>Longitude</th>
     <th>Map link</th>
     <th>Distance (km)</th>
+    <th>Pubs</th>
   </thead>
   <tbody>
     <% if @places %>
@@ -20,6 +21,7 @@
         <td><%= place.longitude.round 4 %></td>
         <td><a href="<%= place.map_url %>">Map</a></td>
         <td><%= (place.distance/1000.0).round 2 %> km </td>
+        <td><a href="/pubs/<%= place.osm_id %>">Pubs</a></td>
       </tr>
       <% end %>
     <% end %>

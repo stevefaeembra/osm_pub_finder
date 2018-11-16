@@ -1,7 +1,15 @@
-<h1>Search habited places</h1>
-<p>e.g. *by finds places ending in 'by', '*kirk*' matches anything with 'kirk' in the name</p>
+<h1>Search for place name</h1>
+<hr>
+<ul>
+  <li>*by finds places ending in '-by'</li>
+  <li>*kirk* matches anything with 'kirk' in the name</li>
+  <li>kirk* finds anything staring with 'kirk-'</li>
+  <li>dundee will only find dundee</li>
+  <li>searches are case insensitive</li>
+</ul>
+<hr>
 <form class="search" action="/find" method="get">
   <label for="pattern">Pattern</label>
   <input type="text" id="pattern" name="pattern">
-  <input type="submit" name="submit" value="Search">
+  <input type="submit" name="submit" value="Go!">
 </form>
