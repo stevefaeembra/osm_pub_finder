@@ -8,11 +8,15 @@ html {
 }
 
 body {
+  width: 80%;
+  margin: 0 auto;
   font-size: 1.3rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 ul {
   list-style: circle;
+  padding-left: 2rem;
 }
 
 th {
@@ -37,4 +41,23 @@ tr:nth-of-type(2n+0) {
 
 tr:nth-of-type(2n+1) {
   background-color: white;
+}
+
+input, label {
+  margin: 1rem;
+  padding: .5rem;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"] {
+  border-radius: 1rem;
+  width: 80%;
+}
+
+input[type="submit"] {
+  border-radius: 1rem;
+  background-color: rgb(193, 223, 198);
 }
