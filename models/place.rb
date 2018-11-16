@@ -69,7 +69,7 @@ class Place
     select
     	p."name" as "name",
     	p.osm_id,
-    	p.place,
+    	\'pub\' as place,
     	st_x(st_transform(p.way,4326)) as longitude,
     	st_y(st_transform(p.way,4326)) as latitude,
     	st_distance(
@@ -127,10 +127,31 @@ class Place
     SqlRunner.all(sql,params,Place)
   end
 
-  def map_url
+  def choose_zoom_level()
+    # chooses an OSM map zoom level according to the
+    # value of place. For pubs we want zoomed in a lot (z=17),
+    # for cities we want zoomed out (z=14), towns zoomed in (z=15)
+    # and so on
+    default_level = 14
+    levels = {
+      "city" => 14,
+      "island" => 15,
+      "town" => 15,
+      "village" => 15,
+      "suburb" => 15,
+      "neighbourhood" => 15,
+      "hamlet" => 16,
+      "pub" => 17
+    }
+    return levels[@place] if levels[@place]
+    return default_level
+  end
+
+  def map_url()
     x = @longitude
     y = @latitude
-    "https://www.openstreetmap.org/#map=13/#{y}/#{x}"
+    z = choose_zoom_level()
+    "https://www.openstreetmap.org/#map=#{z}/#{y}/#{x}"
   end
 
 end
