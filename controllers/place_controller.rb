@@ -19,3 +19,12 @@ get '/neighbours/:id' do
   @count = @places.length
   erb(:neighbours)
 end
+
+get '/pubs/:id' do
+  # find pubs within a certain distance of a location
+  @place = Place.find(params[:id])
+  @placename = @place.name
+  @places = @place.find_pubs()
+  @count = @places.length
+  erb(:pubs)
+end

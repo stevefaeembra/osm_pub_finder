@@ -31,6 +31,9 @@ class Place
   end
 
   def self.search(pattern)
+    # find place names matching a simple regex
+    # e.g. castle*, *castle, *castle*
+    # search is case-insensitive
     pattern.gsub! /[*]/,"%"
     p pattern
     sql = '
@@ -49,6 +52,41 @@ class Place
       order by lower("name") asc;
     '
     params = [pattern]
+    SqlRunner.all(sql,params,Place)
+  end
+
+  def find_pubs()
+    # find pubs within 5km of this place
+    sql = '
+        with home as (
+    	select
+    		st_transform(way,27700) as geom
+    	from
+    		planet_osm_point
+    	where
+    		osm_id = $1
+    )
+    select
+    	p."name" as "name",
+    	p.osm_id,
+    	p.place,
+    	st_x(st_transform(p.way,4326)) as longitude,
+    	st_y(st_transform(p.way,4326)) as latitude,
+    	st_distance(
+    		st_transform(home.geom,27700),
+    		st_transform(p.way,27700)
+    	) as distance
+    from
+    	home,
+    	planet_osm_point p
+    where
+    	p."name" is not null and
+    	p.amenity = \'pub\' and
+    	st_dwithin(home.geom,st_transform(p.way,27700),5000)
+    order by
+    	distance asc;
+    '
+    params = [@osm_id]
     SqlRunner.all(sql,params,Place)
   end
 

@@ -1,13 +1,14 @@
-<h1>Found <%= @count %> places close to <%= @placename %></h1>
+<h1>Found <%= @count %> pubs close to <%= @placename %></h1>
 <table>
   <thead>
     <th>osm_id</th>
-    <th>Name</th>
+    <th>Pub Name</th>
     <th>Place</th>
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Map link</th>
     <th>Distance (km)</th>
+    <th>Walk time (min)</th>
   </thead>
   <tbody>
     <% if @places %>
@@ -20,6 +21,7 @@
         <td><%= place.longitude.round 4 %></td>
         <td><a href="<%= place.map_url %>">Map</a></td>
         <td><%= (place.distance/1000.0).round 2 %> km </td>
+        <td><%= ((place.distance/1000.0)*15.0*1.4).to_i %> min </td>
       </tr>
       <% end %>
     <% end %>
