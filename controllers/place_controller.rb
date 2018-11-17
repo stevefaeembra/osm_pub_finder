@@ -11,6 +11,14 @@ get '/find' do
   erb(:results)
 end
 
+get '/find_pub' do
+  # find pub matching name pattern
+  @places = Place.search_pub(params[:pattern].downcase)
+  @pattern = params[:pattern]
+  @count = @places.length
+  erb(:pubs_by_name)
+end
+
 get '/neighbours/:id' do
   # find places within a certain distance
   @place = Place.find(params[:id])

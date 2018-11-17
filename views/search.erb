@@ -7,7 +7,18 @@
   <li>searches are case insensitive</li>
 </ul>
 <form class="search" action="/find" method="get">
-  <label for="pattern">Search for...</label>
+  <label for="pattern">Place name</label>
+  <input type="text" id="pattern" name="pattern" autofocus>
+  <input type="submit" name="submit" value="Go!">
+</form>
+<hr>
+<h2>Search for pub name</h2>
+<ul>
+  <li>* is wildcard</li>
+  <li>searches are case insensitive</li>
+</ul>
+<form class="search" action="/find_pub" method="get">
+  <label for="pattern">Pub Name</label>
   <input type="text" id="pattern" name="pattern" autofocus>
   <input type="submit" name="submit" value="Go!">
 </form>

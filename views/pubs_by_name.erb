@@ -1,0 +1,23 @@
+<h2>Found <%= @count %> pubs matching <strong><%= @pattern %></strong></h2>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Place</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Map link</th>
+  </thead>
+  <tbody>
+    <% if @places %>
+      <% @places.each do |place| %>
+      <tr>
+        <td><a href="/pubs/<%= place.osm_id %>"><%= place.name %></a></td>
+        <td><%= place.place %></td>
+        <td><%= place.latitude.round 4 %></td>
+        <td><%= place.longitude.round 4 %></td>
+        <td><a href="<%= place.map_url %>">Map</a></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
