@@ -61,7 +61,7 @@ input, label {
 }
 
 label {
-  display: block;
+  display: none;
 }
 
 input[type="text"] {
@@ -95,4 +95,9 @@ h1 {
 
 h4 {
   color: rgba(0,0,0,0.3);
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
 }
